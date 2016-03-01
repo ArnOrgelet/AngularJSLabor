@@ -1,0 +1,46 @@
+<offers-view type="type" activeoffer="selectedOffer" offersdata="offers" countriesdata="multidata.countries" companiesdata="multidata.companies">
+    
+<div ng-repeat="firma in companies">
+    <!-- we load the companyDetails directive only once per company, so as we do not create multiple div with same id (cf template of directive) -->
+    <company-details company="firma" website="{{firma.website}}"></company-details>
+</div>
+
+    <p class="head">Entschprechende Angebote</p>
+    <div class="tabbable tabs-right">
+        <div class="row">
+            <div class="col-xs-12 col-md-7 pagination pagination-large">
+                <ul class="nav nav-tabs nav-stacked nav-warning list-group" >
+                    <li ng-class="{'disabled ': from<1, 'active ': from>=1}" ><a href="#" ui-sref="board.selection({type:type, from:{{from*1-offset*1-1>0?from*1-offset*1-1:0}}, to:{{from*1<nbEntries?nbEntries:from*1}} })" ng-click="prevPage()">Prev</a></li>
+                    <li ng-repeat="angebot in offers | filtering: filtersmapping">
+                        <!--  | countryfilter glyphicon glyphicon-triangle-bottom glyphicon glyphicon-menu-down exclusive:filtersmapping-->
+                        <offer-intro offer="angebot"><!-- if transclude activated
+                            <a href="#{{angebot.id}}" data-toggle="tab" ng-click="setActiveOffer(offer)">
+                                <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+                            </a> -->
+                            <button class="btn btn-primary"  data-target="#{{angebot.id}}" data-toggle="tab" ng-click="setActiveOffer(offer)">
+                                <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+                            </button>
+                        </offer-intro>
+                    </li>
+                    <li ng-class="{'disabled ': from+nbEntries>=nbHits, 'active ': from+nbEntries<nbHits}" ><a href="#" ui-sref="board.selection({type:type, from:{{from*1+nbEntries*1}}, to:{{from*1+nbEntries*2>nbHits?nbHits:from*2+nbEntries*2}} })" ng-click="nextPage()">Next</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-md-5 tab-content" > 
+                <div ng-class="{'tab-pane ':true}" id="{{angebot.id}}" ng-repeat="angebot in offers"> <!-- ng-class="{'active ':($index==1 && activeoffer!==null)}" -->
+                    <offer-details offer="angebot">
+                        <!-- if transclude activated <company-details company="angebot.company" website="offer.website"></company-details>-->
+                    </offer-details>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--div ng-repeat="angebot in offersdata">
+    <offer-intro offer="angebot">
+        <a href="#{offer.id}" data-toggle="tab" ng-click="setActiveOffer(offer)">
+            <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+        </a>
+    </offer-intro>
+    <offer-details offer="angebot">
+    </offer-details>
+</div-->
+</offers-view>

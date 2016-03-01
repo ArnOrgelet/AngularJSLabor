@@ -1,0 +1,89 @@
+
+
+<article>
+    <!-- ng-show="activeOffer != null" -->
+    <div class="tab-pane active" id="{offer.id}">
+        <div class="jumbotron">
+            <div class="container">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-10 col-md-offset-1">
+                                <h3>{{offer.shortDescription}}</h3>
+                            </div>
+                            <div class="col-xs-3 col-md-offset-1 text-center">
+                                <h2>
+                                    <button type="button" class="btn text-center" data-toggle="modal" data-target='#companyDialog{{offer.company.id}}'> <!-- data-tooltip-html-unsafe="{{tooltipCntt}}" data-tooltip-placement="right" -->
+                                        <pre class="text text-default" >{{offer.company.companyName}}</pre>
+                <!--ng-transclude ></!--ng-transclude--><!-- ng-show="false" -->
+                                    </button>
+                                </h2>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="panel-body">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <h7>
+                                        <div class="col-xs-4 text-left" style="border:3px ridge #484295; border-radius:1px 4px">
+                                            <div class="row text-center">
+                                                <span class="glyphicon glyphicon-time" style="color:#2cff8b;"></span>
+                                            </div>
+                                            <div class="row text-center">
+                                                <div class="label label-info">{{offer.dateAdded}}</div> 
+                                            </div>
+                                        </div>
+                                    </h7>
+                                    <div class="col-xs-4">
+                                        <h3>
+                                            <div class="radio">
+                                                <label >
+                                                    <input type="radio" name="liker" ng-model="offer.onNotepad" ng-value="!offer.onNotepad" ng-change='changelike(offer.id, offer.onNotepad)'>
+                                                    <span ng-show="!offer.onNotepad" class="glyphicon glyphicon-star-empty" style="color: #e3ff30;"></span>
+                                                    <span ng-show="offer.onNotepad" class="glyphicon glyphicon-star" style="color: #ffd800;"></span>
+                                                </label>
+                                               
+                                            </div>
+                                        </h3>
+                                    </div>
+                                    <h7>
+                                        <div class="col-xs-4 text-right" style="border:3px ridge #484295; border-radius:4px 1px">
+                                            <div class="row text-center">
+                                                <span class="glyphicon glyphicon-time" style="color:#db0909;"></span>
+                                            </div>
+                                            <div class="row text-center">
+                                                <div class="label label-info">{{offer.validDate}}</div> 
+                                            </div>
+                                        </div>
+                                    </h7>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <small style="text-decoration: double;">~ Description ~</small>
+                                <blockquote style="text-align: justify;">
+                                    {{offer.description}}
+                                </blockquote>
+                            </div>
+                            <div class="panel-footer">
+                                <small style="text-decoration: double;">~ Addresse ~</small>
+                                <address>
+                                    {{offer.usageSite}}
+                                </address>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer clearfix">
+                        <div class="pull-right">
+                            <a href="#" class="btn btn-primary">Go Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--company-details companyname="{{offer.company.companyName}}" nboffers="{{offer.company.numberOfOffers}}" nbemployees="{{offer.company.numberOfEmployees}}" website="{{offer.website}}"></!--company-details>
+    <company-details companyname="offer.company.companyName" nboffers="offer.company.numberOfOffers" nbemployees="offer.company.numberOfEmployees" website="offer.website"></company-details>
+
+</article>

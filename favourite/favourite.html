@@ -1,0 +1,70 @@
+<div class="jumbotron" ng-init="init()">
+    <div  data-spy="scroll" data-target=".navbar"<!--data-offset="50"-->
+
+        <!-- The navbar - The <a> elements are used to jump to a section in the scrollable area -->
+        <nav class="navbar navbar-inverse"> <!-- navbar-fixed-top -->
+            <ul class="nav navbar-nav">
+                <li ng-repeat="cat in typeSet"><a data-ng-href="#{{cat}}" ng-bind="cat"></a></li>
+            </ul>
+        </nav>
+    
+        <h3>Meine Lieblingsangeboten</h3>
+
+        <!-- Section 1 {{value.offers[0].companyId}}-->
+        <section id="{key}" ng-repeat="(key, value) in favbytype">
+            <h1 ng-bind="key"></h1>
+                            
+            <section class="row">
+                <offers-view ng-class="{'col-xs-12':!hasSelectedOffer(), 'col-xs-6':hasSelectedOffer()}" type="type" offersdata="favByTypes[key]"><!-- activeoffer="selectedOffer" countriesdata="multidata.countries" companiesdata="multidata.companies" -->
+                    <article  ng-repeat="item in value.offers">
+                        <offer-intro class="col-xs-10 col-sm-8 col-md-6" offer="item">
+                            <div class="row-fluid">
+                                <div class="col-xs-4">
+                                    <h5 class="text text-default col-xs-7"><strong>{{offer.company.companyName}}</strong></h5>
+                                    <h6 class="text text-default col-xs-push-1 col-xs-4">{{offer.company.city}}</h6>
+                                </div>
+                                <div class="col-xs-5 push-xs-1">
+                                    <h5 class="text text-inverse text-center"><strong>{{offer.shortDescription}}</strong></h5>
+                                </div>
+                                <div class="col-xs-2" style="top:45%">
+                                    <!--ng-transclude>
+                                    <a href="#detailsModal" data-toggle="modal" ng-click='$event.preventDefault();setSelectedOffer(offer);'>
+                                        <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+                                    </a>
+                                    <a href="" 
+                                        data-toggle="popover" 
+                                        data-html="true" 
+                                        data-content="<h3>toto</h3>"
+                                        title="<b>Infos über das Angebot...</b>">
+                                    Popover Example 1</a></ng-transclude-->
+                                    <button class="btn btn-primary" data-toggle="modal" data-target="#favDialog" ng-click='$event.preventDefault();setSelectedOffer(item);'><span class="glyphicon glyphicon-chevron-right pull-right"></span></button>
+                                </div>
+                            </div>
+                        </offer-intro>
+                    </article>
+                    <section>
+                        <div class="modal fade" id="favDialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="closed();">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <offer-details offer="selectedoffer"></offer-details>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </section>
+                    <!--div ng-show="isSelectedOffer(offer)">
+                        <offer-details offer="selectedoffer"></offer-details>
+                    </div-->
+                </offers-view>
+            </section>
+            <p>Try to scroll this page and look at the navigation bar while scrolling!</p>
+        </section>
+        </div>
+
+    
+</div>
+

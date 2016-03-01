@@ -1,0 +1,40 @@
+<h4>Filtern</h4>
+<form ng-repeat="fltr in filters">
+    <div class="col-sm-6">
+        <div class="well carousel-search hidden-sm">
+            <div class="dropdown">
+                <div class="btn-group" style="display: inline-block;">
+                    <button type="button" ng-class="{'dropdown-toggle btn-select btn ':true, 'btn-warning ':($index %2 == 0), 'btn-info ':($index %2 != 0)}">
+                        <!--
+                        <div ng-show="fltr.nbSelectedItems == 0 || fltr.nbSelectedItems >= fltr.options.length">Wählt dein {{fltr.title}} aus</div>
+                        <div ng-show="fltr.nbSelectedItems == 1" ng-bind="fltr.options[fltr.index] "> </div>
+                        <div ng-show="fltr.nbSelectedItems > 2 && fltr.nbSelectedItems < fltr.options.length"> Es sind {{fltr.nbSelectedItems}} Answahlen </div>
+                        -->
+                        <div>Bitte {{fltr.title}} auswählen</div>
+                    </button>
+                    <button type="button" data-toggle="dropdown" ng-class="{'dropdown-toggle btn-select btn ':true, 'btn-warning ':($index %2 == 0), 'btn-info ':($index %2 != 0)}">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu form-group">
+        
+                        <!--  | exclude:{target} cursor: pointer;-->
+                        <li style="display: block; " ng-class="{'label ':true, 'label-success ':($index %2 == 0), 'label-default ':($index %2 != 0)}"
+                            ng-mouseover="hoverIn(opt)"
+                            ng-mouseleave="hoverOut(opt)"
+                            ng-repeat="opt in fltr.options">             <!--  | exclude:fltr.options[index] -inline ng-value="false"-->           
+                            <label class="checkbox">
+                                <input type="checkbox" name="{filters[fltr.title]}" ng-model="filtersmapping[fltr.title][opt.id]" ng-value="opt.id" ng-true-value="true" ng-false-value="false" ng-change="console.log(filters[fltr.title]);">{{opt.label}} <!-- 'add''discard' lastCheckedItem filters[fltr.title][selected][opt] -->
+                            </label>
+                            <!--a ng-model="filtersmapping[fltr.title]"
+                            ng-model-options="{ debounce: 3000 }"
+                            ng-bind="opt" ng-click="console.log(filtersmapping[fltr.title]);fltr.change(opt)"></!--a><!--<a tabindex="-1" href="#">{{opt}}</a>-->
+
+                        </li>
+                        <li class="divider"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!--button type="submit" class="btn" ng-click="applyFilters(); print(filtersmapping)">Anwenden</!button-->

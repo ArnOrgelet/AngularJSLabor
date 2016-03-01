@@ -1,0 +1,53 @@
+<div class="row">
+    <section class="col-sm-11 table-responsive">
+        <table class="table table-bordered table-striped table-condensed">
+            <caption>
+                <h4>Meine Informationen</h4>
+            </caption>
+            <thead>
+                <tr class="row" style="text-align: right;">
+                    <th class="col-xs-12">
+                        <table class="table table-bordered table-striped" border="0" bgcolor="#006600" cellpadding="5" cellspacing="0">
+                            <thead>
+                                <tr class="row">
+                                    <th class="col-md-4 col-sm-6">Vorname</th>
+                                    <th class="col-md-4 col-sm-6">Name</th>
+                                    <th class="col-md-4 hidden-xs hidden-sm">Matrikul</th>
+                                </tr>
+                            </thead>
+                            <tbody style="text-align: left;" >
+                                <tr class="row align="right">
+                                    <td class="col-md-4 col-sm-6" ng-bind="user.firstName"></td>
+                                    <td class="col-md-4 col-sm-6" ng-bind="user.lastName"></td>
+                                    <td class="col-md-4 hidden-xs hidden-sm" ng-bind="user.matrNumber"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="row">
+                    <td class="col-xs-10">
+                        <table class="table table-bordered table-striped">
+                            <tr>
+                                <th class="col-xs-3"><a class="alert" data-toggle="tooltip" data-placement="left" title="Mail-Adresse"><span class="glyphicon glyphicon-envelope" ></span></a></th>
+                                <td class="col-xs-7" ng-bind="user.mailAddress"></td>
+                            </tr>
+                            <tr>
+                                <th class="col-xs-3"><a class="alert" data-toggle="tooltip" data-placement="left" title="Telefonnummer"><span class="glyphicon glyphicon-phone"></span></a></th>
+                                <td class="col-xs-7" ng-bind="user.telephoneNumber"></td>
+                            </tr>
+                            <tr>
+                                <th class="col-xs-3"><a class="alert" data-toggle="tooltip" data-placement="left" title="Role"><span class="glyphicon glyphicon-credit-card"></span></th>
+                                <td class="col-xs-7 text-default" ng-bind="user.faculty"><abbr title="user.courseOfStudiesName"></abbr></td>
+                            </tr>
+
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+            </th>
+        </table>
+    </section>
+</div>

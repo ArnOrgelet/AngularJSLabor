@@ -1,0 +1,87 @@
+<div class="container-fluid" style="background-color: #b6ff00; min-height: 330px;">
+    <div class="row">
+        <div class="hidden-xs hidden-sm col-md-9 text-center" style="height: 125px;">
+            <img src="img/profile.png" class="img-circle visible-md visible-lg" alt="profile_img" style="padding-left: 15%; margin-top: 10%; margin-bottom: 10%; max-height: 75%; max-width: 75%;" />
+            <figcaption>Bitte einlogen</figcaption>
+        </div>
+    </div>
+    <div class="row">
+        <form class="form-inline form-horizontal" name="accessForm" style="text-align: center">
+            <fieldset class="col-sm-10 col-sm-push-1 col-md-6 " name="inputForm">
+                <legend>- Meine Anmeldedaten -</legend>
+                <div class="row">
+                    <div class="col-xs-8 col-xs-push-2">
+                        <div class="row">
+                            <div class="col-xs-10 col-sm-8 col-sm-push-2 col-md-push-1 col-md-5">
+                                <div class="row text-center">
+                                    <div class="form-group col-xs-10 col-xs-push-1 has-error" style="display: block; padding-right: 15%;">
+                                        <div class="input-group row">
+                                            <div class="col-xs-4" style="height: inherit;">
+                                                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                            </div>
+                                            <div class="col-xs-8">
+                                                <div class="control-group warning">
+                                                    <div class="row">
+                                                        <label for="nameInput" class="label label-success control-label col-xs-7">Name :</label>
+                                                        <div class="col-xs-5" ng-show="!accessForm.$submitted && accessForm.userIZ.$touched">
+                                                            <i class="label label-info">abcd0123</i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="controls row">
+                                                        <input id="nameInput" class="form-control col-xs-12 text-right" name="userIZ" type="text" pattern="[a-z]{4}[0-9]{4}" ng-minlength="8" ng-maxlength="8" placeholder="IZ-Account" ng-model="access.name" required autofocus>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="input-group row">
+                                            <div class="col-xs-4" style="height: inherit;">
+                                                <span class="input-group-addon"><span class="glyphicon glyphicon-barcode"></span></span>
+                                            </div>
+                                            <div class="col-xs-8">
+                                                <div class="control-group warning">
+                                                    <div class="row">
+                                                        <label for="pwInput" class="label label-success control-label col-xs-7">Passwort : </label>
+                                                        <div class="col-xs-5" ng-show="!accessForm.$submitted && accessForm.userPW.$touched">
+                                                            <i class="label label-info">Achten Sie auf den A-a</i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="controls row">
+                                                        <input id="pwInput" class="form-control col-xs-12 text-right" name="userPW" type="password" placeholder="Passwort" style="text-align: right" ng-model="access.passwort" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--div class="row">
+                                        <button type="button" class=" hidden-xs hidden-sm col-md-3 col-md-push-2 btn btn-primary btn-md btn-block"><span class="glyphicon glyphicon-check">Anfertigen</span></button>
+                                    </div-->
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div>
+                                        <div role="alert" ng-show="accessForm.$submitted">
+                                            <span class="error" ng-show="accessForm.userPW.$error.required">Required Passwort!</span>
+                                        </div>
+
+                                        <div role="alert" ng-show="accessForm.$submitted">
+                                            <span class="error" ng-show="accessForm.userIZ.$error.required">Required IZ-Nummer!</span>
+                                        </div>
+                                        <div role="alert" ng-show="accessForm.$submitted">
+                                            <span class="error" ng-show="accessForm.userIZ.$error.minlength || accessForm.userIZ.$error.maxlength">IZ-Nummer besteht aus 4 Buchstaben & 4 Zählen</span>
+                                        </div>
+                                    </div>
+                                    <span class="help-block">Il y a un problème dans la saisie</span>
+                                </div>
+                                <div class="row">
+                                    <div class="btn-group"> 
+                                        <button type="reset" class="btn"><i class="icon-align-left"></i></button>
+                                    <span class="btn btn-lg btn-info btn-block col-md-push-3 text-center" ng-click="tryConnection(access)"><span class="glyphicon glyphicon-check">Anfertigen</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

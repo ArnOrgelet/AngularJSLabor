@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="col-sm-3">
+            <header ><!-- style="position: fixed; z-index: 2; width: auto;" -->
+                <h2>Siehe die Angebote</h2>
+                <h1 ng-bind="type"></h1>
+            </header>
+        </div>
+        <div class="col-sm-8 col-xs-12">
+            <div class="tabbable tabs-right">
+                <ul class="nav nav-pills nav-stacked">
+                    <!-- pills -->
+                    <li class="active"><a href="#filters" data-toggle="tab">Filters</a></li>
+                    <li><a href="#keywords" data-toggle="tab">SchlusselWörter</a></li>
+                    <li><a href="#layoutOptions" data-toggle="tab" class="pull-bottom">Layout</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="filters">
+                        <navigator companies countries class="row"></navigator><!-- filtersmapping="filtersmapping" -->
+                    </div>
+                    <div class="tab-pane" id="keywords">
+                        <p>Wählt deine SchlusselWörter</p>
+                        <form class="navbar-form navbar-right" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control input-long search-query" placeholder="Gib deine Wörter ein" ng-model="wordsInput">
+                            </div>
+                            <button type="submit" class="btn btn-default btn-sm" ng-click="submit()">Submit</button>
+                    </div>
+                    <div class="tab-pane" id="layoutOptions">
+                        <p>This is the page content for <i>Layout</i></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
